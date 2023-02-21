@@ -4,4 +4,15 @@ Data on 10 strains of non toxigenic C. difficile with a focus on strain CCUG3778
 -reads already assessed using FastQC
 # *Alignment Methods* 
 ## 1)ClustalW
+### Software Description 
 
+
+
+
+### Strengths & Weaknesses 
+
+
+### Assumptions 
+
+
+### User Choice
