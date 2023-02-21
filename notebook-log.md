@@ -1,7 +1,12 @@
 # *Description*
 Data on 10 strains of non toxigenic C. difficile with a focus on strain CCUG37785 
+
 -whole genomes 
+
 -reads already assessed using FastQC
+
+-Study relevant to data showed that CCUG37785 spores inoculated orally in mice provided almost full protection against a virulent strain. 
+
 # *Alignment Methods* 
 ## 1)ClustalW
 ### Software Description 
@@ -25,3 +30,5 @@ Refer to my ClustalW terminal output file for step by step of how the alignment 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC308517/pdf/nar00046-0131.pdf
 
 http://www.clustal.org/download/clustalw_help.txt
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9045287/#B21
