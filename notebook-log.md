@@ -57,3 +57,40 @@ After running Muscle again after fixing error another error appeared: *** ERROR 
 https://academic.oup.com/nar/article/32/5/1792/2380623?login=false
 
 https://www.drive5.com/muscle/manual/msa_getletter_bug.html
+
+# *Distance and Parsimony Methods*
+## 1) R Package - ape for distance-based tree estimation method
+### Software Description 
+ape is a package written in R for the analysis of phylogenetics and evolution. Functions for reading, writing, plotting, and manipulating phylogenetic trees, analyses of comparative data in a phylogenetic framework, ancestral character analyses, analyses of diversification and macroevolution, computing distances from DNA sequences, reading and writing nucleotide sequences as well as importing from BioConductor, and several tools such as Mantel's test, generalized skyline plots, graphical exploration of phylogenetic data (alex, trex, kronoviz), estimation of absolute evolutionary rates and clock-like trees using mean path lengths and penalized likelihood, dating trees with non-contemporaneous sequences, translating DNA into AA sequences, and assessing sequence alignments. Phylogeny estimation can be done with the NJ, BIONJ, ME, MVR, SDM, and triangle methods, and several methods handling incomplete distance matrices (NJ*, BIONJ*, MVR*, and the corresponding triangle method). 
+
+I created a tree using the classical Neighbor-Joining (NJ) algorithm. 
+
+### Strengths & Weaknesses 
+can use the Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate. 
+phylogeny estimation can completed with a variety of methods 
+R has the ability to match different datasets using labels (names, rownames and colnames), and ape uses this feature to match trees, sequences and other data. 
+users can face practical difficulties that prevent efficient analysis 
+
+### User Choice 
+In creating tree ran into the following error message: "Error in njs(D) : distance information insufficient to construct a tree, cannot calculate agglomeration criterion." To correct it I refered to page 115 of package 'ape' documentation which has the following note: "If the sequences are very different, most evolutionary distances are undefined and a non-finite value (Inf or NaN) is returned. You may do dist.dna(, model = "raw") to check whether some values are higher than 0.75." None of my distance values were equal to or >.75, but changing the model from TN93 to raw did allow me to create a tree. 
+
+### References 
+https://cran.r-project.org/web/packages/ape/ape.pdf
+
+http://ape-package.ird.fr/
+
+https://academic.oup.com/bioinformatics/article/35/3/526/5055127
+
+## 2) R package - phangron 
+### Software Description 
+phangron is a package for phylogenetic reconstruction and analysis in R. It now offers the possibility of reconstructing phylogenies with distance based methods, maximum parsimony or maximum likelihood (ML) and performing Hadamard conjugation. Extending the general ML framework, this package provides the possibility of estimating mixture and partition models. Furthermore, phangorn offers several functions for comparing trees, phylogenetic models or splits, simulating character data and performing congruence analyses.
+
+I created a tree using the maximum parsimony (MP) method. MP is an optimality criterion for which the preferred tree is the tree that requires the least changes to explain some data. 
+
+### Strengths & Weaknesses 
+allows for search and comparison to find the better tree 
+parsimony methods have been shown to produce inconsistent trees
+### User Choice 
+The maximum parsimony method was used to construct the tree.
+### Refrences 
+https://academic.oup.com/bioinformatics/article/27/4/592/198887
