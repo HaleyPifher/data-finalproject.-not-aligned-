@@ -89,6 +89,7 @@ I created a tree using the maximum parsimony (MP) method. MP is an optimality cr
 
 ### Strengths & Weaknesses 
 allows for search and comparison to find the better tree 
+
 parsimony methods have been shown to produce inconsistent trees
 ### User Choice 
 The maximum parsimony method was used to construct the tree.
