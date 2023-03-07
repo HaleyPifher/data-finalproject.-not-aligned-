@@ -32,3 +32,24 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC308517/pdf/nar00046-0131.pdf
 http://www.clustal.org/download/clustalw_help.txt
 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9045287/#B21
+
+##2)Muscle
+###Software Description 
+Following guide tree construction, the fundamental step is pairwise profile alignment, which is used first for progressive alignment and then for refinement. MUSCLE uses two distance measures for a pair of sequences: a k mer distance (for an unaligned pair) and the Kimura distance (for an aligned pair). 
+Figure that describes process visually can be found at https://academic.oup.com/view-large/figure/38266783/gkh340f2.jpeg 
+###Strengths & Weaknesses
+Fast distance estimation using k mers (espec for large sequences)
+Compared to other methods (CLUSTALW, T-Coffee, and MAFFT) has average accuracy and high speed for large numbers of sequences 
+UPGMA over Neighbor Joining (NJ) is used to build tree because it provides better accuracy at each node by aligning 2 profiles with the fewest differences even if they aren’t evolutionary neighbors.
+Lack of statistically significant results in paper (linked in references) ex. Muscle-p (time + space complexity, no refinement included) results are not statistically significant compared to T-Coffee and NWNSI
+Stage I of the process emphasizes speed over accuracy 
+###User Choice 
+Same user choices as described above under alignment method 1 (ClustalW). Additinally, I ran into an error/bug with muscle   "*** ERROR ***  MSA::GetLetter(0/1, 152/24551)=" this was fixed by running the folloing commands: 
+*** ERROR ***  MSA::GetLetter(0/1, 2974/115365)='
+(base) MacBook-Pro-2:muscle2 haleypifher$ 
+(base) MacBook-Pro-2:muscle2 haleypifher$ ls
+finalprojectalignmentdata.fasta	muscle3.8.31_i86darwin64	muscle3.8.31_i86darwin64.tar.gz
+(base) MacBook-Pro-2:muscle2 haleypifher$ grep "'" finalprojectalignmentdata.fasta 
+(base) MacBook-Pro-2:muscle2 haleypifher$ less finalprojectalignmentdata.fasta 
+(base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 
+After running Muscle again after fixing error another error appeared: *** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295 (3/2/23). 
