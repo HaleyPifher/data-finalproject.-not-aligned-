@@ -55,4 +55,5 @@ finalprojectalignmentdata.fasta	muscle3.8.31_i86darwin64	muscle3.8.31_i86darwin6
 After running Muscle again after fixing error another error appeared: *** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295 (3/2/23). 
 ### References 
 https://academic.oup.com/nar/article/32/5/1792/2380623?login=false
+
 https://www.drive5.com/muscle/manual/msa_getletter_bug.html
