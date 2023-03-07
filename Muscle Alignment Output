@@ -1,3 +1,5 @@
+#Run 1
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ chmod +x muscle3.8.31_i86darwin64
 (base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 -in finalprojectalignmentdata.fasta -out finalprojectalingmentdata-aligned-muscle.fasta
 
@@ -11,3 +13,62 @@ finalprojectalignmentdata 10 seqs, max length 160873, avg  length 32209
 00:00:00      6 MB(0%)  Iter   1  100.00%  K-mer dist pass 1
 00:00:00      6 MB(0%)  Iter   1  100.00%  K-mer dist pass 2
 00:00:32    553 MB(3%)  Iter   1   77.78%  Align node       
+
+#Run 2
+
+*** ERROR ***  MSA::GetLetter(0/1, 2974/115365)='
+(base) MacBook-Pro-2:muscle2 haleypifher$ 
+(base) MacBook-Pro-2:muscle2 haleypifher$ ls
+finalprojectalignmentdata.fasta	muscle3.8.31_i86darwin64	muscle3.8.31_i86darwin64.tar.gz
+(base) MacBook-Pro-2:muscle2 haleypifher$ grep "'" finalprojectalignmentdata.fasta 
+(base) MacBook-Pro-2:muscle2 haleypifher$ less finalprojectalignmentdata.fasta 
+(base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+Basic usage
+
+    muscle -in <inputfile> -out <outputfile>
+
+Common options (for a complete list please see the User Guide):
+
+    -in <inputfile>    Input file in FASTA format (default stdin)
+    -out <outputfile>  Output alignment in FASTA format (default stdout)
+    -diags             Find diagonals (faster for similar sequences)
+    -maxiters <n>      Maximum number of iterations (integer, default 16)
+    -maxhours <h>      Maximum time to iterate in hours (default no limit)
+    -html              Write output in HTML format (default FASTA)
+    -msf               Write output in GCG MSF format (default FASTA)
+    -clw               Write output in CLUSTALW format (default FASTA)
+    -clwstrict         As -clw, with 'CLUSTAL W (1.81)' header
+    -log[a] <logfile>  Log to file (append if -loga, overwrite if -log)
+    -quiet             Do not write progress messages to stderr
+    -version           Display version information and exit
+
+Without refinement (very fast, avg accuracy similar to T-Coffee): -maxiters 2
+Fastest possible (amino acids): -maxiters 1 -diags -sv -distance1 kbit20_3
+Fastest possible (nucleotides): -maxiters 1 -diags
+(base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 -in finalprojectalignmentdata.fasta -out finalprojectalingmentdata-aligned-muscle.fasta -maxiters 10
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+finalprojectalignmentdata 10 seqs, max length 160873, avg  length 32209
+00:00:00      6 MB(0%)  Iter   1  100.00%  K-mer dist pass 1
+00:00:00      6 MB(0%)  Iter   1  100.00%  K-mer dist pass 2
+00:14:09  2919 MB(17%)  Iter   1  100.00%  Align node       
+00:14:09  2919 MB(17%)  Iter   1  100.00%  Root alignment
+01:20:14  3014 MB(18%)  Iter   2  100.00%  Refine tree   
+01:20:14  3014 MB(18%)  Iter   2  100.00%  Root alignment
+01:20:14  3014 MB(18%)  Iter   2  100.00%  Root alignment
+
+*** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295
+(base) MacBook-Pro-2:muscle2 haleypifher$ 
