@@ -93,7 +93,8 @@ AHJJ01000056.1                  0.616666667
 > tre.pars <- optim.parsimony(tre.ini, dna2)
 Final p-score 102922 after  0 nni operations 
 > plot(tre.pars, cex=0.6)
-> 
+
+
 > 
 > source("/Users/haleypifher/Documents/unnamed document.pdf")
 Error in source("/Users/haleypifher/Documents/unnamed document.pdf") : 
