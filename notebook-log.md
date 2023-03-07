@@ -67,8 +67,11 @@ I created a tree using the classical Neighbor-Joining (NJ) algorithm.
 
 ### Strengths & Weaknesses 
 can use the Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate. 
+
 phylogeny estimation can completed with a variety of methods 
+
 R has the ability to match different datasets using labels (names, rownames and colnames), and ape uses this feature to match trees, sequences and other data. 
+
 users can face practical difficulties that prevent efficient analysis 
 
 ### User Choice 
