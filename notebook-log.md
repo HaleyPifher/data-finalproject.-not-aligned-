@@ -98,3 +98,49 @@ parsimony methods have been shown to produce inconsistent trees
 The maximum parsimony method was used to construct the tree.
 ### Refrences 
 https://academic.oup.com/bioinformatics/article/27/4/592/198887
+
+# *Maximum Liklihood*
+## 1)RAXML
+### Software Description 
+RAxML (Randomized Axelerated Maximum Likelihood) is a popular program for phylogenetic analysis of large datasets under maximum likelihood. 
+RAxML-NG, a from-scratch re-implementation of the established greedy tree search algorithm of RAxML/ExaML. Uses Subtree Pruning and Regrafting (SPR) moves to quickly navigate to the best known ML tree.
+### Strengths & Weaknesses 
+Employs a two-step L-BFGS-B method in replacement of the Brent’s method: allowing for increased speed & stability 
+
+Can compute the novel branch support metric called transfer bootstrap expectation (TBE). Making it less sensitive to individual misplaced taxa in replicate trees, better suited to reveal well-supported deep splits in large trees with thousands of taxa when compared to classic felsenstein bootstrap
+
+Optimized the vectorized likelihood computation kernels and eliminated known sequential bottlenecks of RAxML
+
+can be applied to large datasets 
+
+Offers standard statistical significant tests and options to compute Robinson-Foulds distances
+
+Informs phylogenetic terraces (presence and size) 
+
+Best scoring tree overall (1.3 - 4.5 X faster)
+
+Less accurate than IQ-Tree in tree inference 
+
+Has higher variance of trees and can be less stable than IQ-Tree 
+### Main Assumptions 
+Mutation process is the same at every branch of the tree
+
+All sites evolve independently of each other 
+
+All sites evolve the same 
+### User Choice 
+RAxML-NG v1.1 (c) 2021 is the version used as it is most up to date.
+RAxML produced an unrooted tree, so R was used to root the best tree created by RAxML. An error message occured when trying to root with an outgroup, so instead the middpoint method was used. (Error message and commands used can be found in the Max Liklihood text file within this repo)
+### Refrences 
+
+https://rdrr.io/cran/phangorn/man/midpoint.html (midpoint command) 
+
+https://docs.google.com/presentation/d/1uIxM9OfsUO0-SW956TVpfipfVms5bdesJ9YbOfhIUPs/edit#slide=id.g2098f609670_0_0 (group presentation) 
+
+https://academic.oup.com/bioinformatics/article/35/21/4453/5487384?login=false (paper on software)
+
+https://academic.oup.com/bioinformatics/article/30/9/1312/238053?login=false (paper on software)
+
+https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f (extra)
+
+https://cran.r-project.org/web/packages/TreeTools/vignettes/load-trees.html (used to root in R)
