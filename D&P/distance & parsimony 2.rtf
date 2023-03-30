@@ -109,4 +109,21 @@ Final p-score 1443 after  0 nni operations \
 [1] "/Users/haleypifher/Parsimony & distance"\
 > plot(tre.pars, cex=0.6)\
 > plot(tre, cex=.6)\
-> }
+> \
+\
+3/28/23\
+Realized trees were not saved properly as pdfs. Used the following steps to save distance and parsimony trees. Note, orig named my-tree2.pdf was renamed to my-disttree2.pdf once in final project-/D&P folder for organization. \
+\
+> plot(tre, cex=.6)\
+> pdf("my-tree.pdf")\
+> plot(tre, cex=.6)\
+> dev.off()\
+quartz \
+     2 \
+\
+> plot(tre.pars, cex=0.6)\
+> pdf("partree2.pdf")\
+> plot(tre.pars, cex=.6)\
+> dev.off()\
+quartz \
+     2 }
