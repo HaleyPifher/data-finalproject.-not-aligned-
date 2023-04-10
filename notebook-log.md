@@ -1,7 +1,9 @@
 # *Description*
 Data on 10 strains of non toxigenic C. difficile with a focus on strain CCUG37785 
 
--whole genomes 
+-Link to original paper: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9045287/#B21 (data used can be found in table 1) 
+
+-whole genomes sourced from GenBank
 
 -reads already assessed using FastQC
 
