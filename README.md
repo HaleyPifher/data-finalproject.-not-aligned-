@@ -1,6 +1,7 @@
 ## Final Project 
 
-Alignments folder contains the fasta alignment used for analysis (made with Clustal W & msucle) as well as the updated Trim AI alignment 
+Alignments folder 
+contains the fasta alignment used for analysis (made with Clustal W & msucle) as well as the updated Trim AI alignment 
 
 Note: alignment 1 was the orignal alignment, an updated new one was made after Trim AI was used labeled alignment 2
 
