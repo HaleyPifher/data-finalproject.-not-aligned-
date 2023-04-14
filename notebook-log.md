@@ -146,3 +146,31 @@ https://academic.oup.com/bioinformatics/article/30/9/1312/238053?login=false (pa
 https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f (extra)
 
 https://cran.r-project.org/web/packages/TreeTools/vignettes/load-trees.html (used to root in R)
+
+# *Bayesian Inference*
+## Mr.Bayes
+### Software Description 
+Mr.Bayes performs Bayesian inference using a variant of Markov chain Monte Carlo. MRBAYES uses Markov chain Monte Carlo (MCMC) to approximate the posterior probabilities of trees. MCMC is a method for taking valid, albeit dependent, samples from the probability distribution of interest (in this case, the posterior probabilities of phylogenetic trees. The basic MCMC algorithm works as follows: first, a new state for the chain is proposed using a stochastic mechanism. Second, the acceptance probability for this new state is calculated. The acceptance probability is equal to the minimum of one or the likelihood ratio times, the prior ratio times, the proposal ratio, where the likelihood ratio is the ratio of the likelihoods of the new state to the old state, the prior ratio is the ratio of the prior probability of the new state to the old state, and the proposal ratio is the ratio of the probability of proposing the old state to the probability of proposing the new state. Third, a uniform (0, 1) random variable is drawn. If this number is less than the acceptance probability, then the new state is accepted and the state of the chain is updated. Otherwise the chain remains in the old state. This process of proposing and accepting/rejecting new states is repeated many thousands or millions of times. The proportion of the time any single tree is visited during the course of the chain is a valid approximation of its posterior probability.
+### Strengths & Weaknesses 
+easy interpretation of results
+
+the ability to incorporate prior information
+
+some computational advantages
+
+command-line interface
+
+MCMC can take a long time to run because huge tree size, low acceptance of moves unless small neighborhood, small effective sample size 
+
+*note to self: ask about variances and cliffs analogy and how its a disadvantage* 
+
+program can infer ancestral states while accommodating uncertainty about the phylogenetic tree and model parameters
+### Main Assumptions 
+uses posterior probability of the ith phylogenetic tree (τi ) conditional on an alignment of DNA sequences (X) can be calculated using Bayes theorem
+approximates the posterior probabilities of trees 
+### User Choice 
+specify priors, assumptions of subsitution model, and outgroup
+I chose to not specify an outgroup as with maximum liklihood it also did not make sense, the taxa are all very similar on a timescale/interms of genome. *(4/13) will come back and specify specific priors when I run again, first used the original commands*
+use Emacs not text edit (on mac text edit adds random lines of unrelated text that Mr.Bayes can't read and returns an error)
+### Refrences 
+https://academic.oup.com/bioinformatics/article/17/8/754/235132?login=false
