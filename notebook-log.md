@@ -174,3 +174,5 @@ I chose to not specify an outgroup as with maximum liklihood it also did not mak
 use Emacs not text edit (on mac text edit adds random lines of unrelated text that Mr.Bayes can't read and returns an error)
 ### Refrences 
 https://academic.oup.com/bioinformatics/article/17/8/754/235132?login=false
+
+Course slides: Lecture 12 Bayesian Inference 
