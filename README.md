@@ -12,3 +12,5 @@ Maximum Liklihood folder contains the analysis of the maximum liklihood using RA
 Data fold contains the original alignment file and genomes used in creating it 
 
 Notebook contains descriptions of software used 
+
+Mr. Bayes folder contains Mr.Bayes outputs for run 1 (using data without changing block original settings)
