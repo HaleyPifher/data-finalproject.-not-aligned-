@@ -144,9 +144,13 @@ RAxML produced an unrooted tree, so R was used to root the best tree created by 
 To root the tree the following commands were used: 
 
 `> pdf("bestroot2.pdf")
+
 > plot(besttrerooot, cex=.6)
+
 > dev.off()
+
 quartz 
+
      2` 
 ### Refrences 
 
