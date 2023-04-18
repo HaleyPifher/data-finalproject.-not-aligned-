@@ -48,13 +48,21 @@ Stage I of the process emphasizes speed over accuracy
 ### User Choice 
 Same user choices as described above under alignment method 1 (ClustalW). Additinally, I ran into an error/bug with muscle   "*** ERROR ***  MSA::GetLetter(0/1, 152/24551)=" this was fixed by running the folloing commands: 
 *** ERROR ***  MSA::GetLetter(0/1, 2974/115365)='
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ 
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ ls
+
 finalprojectalignmentdata.fasta	muscle3.8.31_i86darwin64	muscle3.8.31_i86darwin64.tar.gz
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ grep "'" finalprojectalignmentdata.fasta 
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ less finalprojectalignmentdata.fasta 
+
 (base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 
-After running Muscle again after fixing error another error appeared: *** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295 (3/2/23). 
+
+After fixing this error Muscle was ran again but another error appeared: *** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295 (3/2/23). Instead of trying to correct for this error by using the same fasta file it was determined creating a new one after using TrimAI to remove poorly aligned sequences would be best. Then Muscle was ran again without error. 
+
 ### References 
 https://academic.oup.com/nar/article/32/5/1792/2380623?login=false
 
