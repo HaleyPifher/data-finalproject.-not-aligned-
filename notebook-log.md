@@ -143,7 +143,7 @@ RAxML-NG v1.1 (c) 2021 is the version used as it is most up to date.
 RAxML produced an unrooted tree, so R was used to root the best tree created by RAxML. An error message occured when trying to root with an outgroup, so instead the middpoint method was used. (Error message and commands used can be found in the Max Liklihood text file within this repo)
 To root the tree the following commands were used: 
 
-` pdf("bestroot2.pdf")
+`pdf("bestroot2.pdf")
 
 > plot(besttrerooot, cex=.6)
 
