@@ -224,7 +224,7 @@ single-individual species lack an estimated length, limiting the utility of the 
 
 locality: in computing the support for a branch, we assume that all four branches around it are correct, enabling us to only consider three rearrangements around the branch
 ### User Choice
-Chose to not use on project data and instead run single genomes on Mr.Bayes and compare gene trees. Interested in similar gene trees between different genomes. 
+Chose to not use on project data and instead run single genomes on Mr.Bayes and compare gene trees. Interested in similar genes shared betweeen genomes.
 ### Refrences 
 https://arxiv.org/pdf/1904.03826.pdf
 
