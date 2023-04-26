@@ -195,3 +195,41 @@ use Emacs not text edit (on mac text edit adds random lines of unrelated text th
 https://academic.oup.com/bioinformatics/article/17/8/754/235132?login=false
 
 Course slides: Lecture 12 Bayesian Inference 
+# *Coalescent*
+## ASTRAL
+### Software Description 
+ASTRAL is a method for reconstructing species trees after inferring a set of gene trees and is increasingly used in phylogenomic analyses. It is statistically consistent under the multi-species coalescent
+model, is scalable, and has shown high accuracy in simulated and empirical studies.
+### Strengths & Weaknesses 
+consistent under any model for which the quartet that matches the species tree is expected to occur with the highest frequency
+
+statistically inconsistent under models of gene evolution that include gene flow.
+
+scalable 
+
+All versions of ASTRAL give a statistically consistent estimator of the species tree if input gene trees are sampled randomly under the multi-species coalescent model (i.e., with no gene tree error, no sampling bias, and no model violations)
+
+ASTRAL can be statistically inconsistent under certain conditions when gene trees evolve on a phylogenetic network (thus, with a combination of ILS and gene flow)
+
+the number of genes required by the exact version of ASTRAL to compute the correct species tree with high probability grows quadratically with the inverse of the shortest branch length and grows logarithmically with the number of species
+
+accuracy of ASTRAL has compared favorably to alternative ILS-based summary methods such as NJst, ASTRID, MP-EST, wQMC, as well as consensus and supertree methods such as greedy consensus, MulRF, and MRP
+
+Improved running time with new versions 
+
+ ASTRAL limits the search space (unless run with -x), it is possible that other trees with better quartet scores exist
+### Main Assumptions 
+ ASTRAL CU branch lengths, however, suffer from two issues, which limit their usability in practice. An obvious shortcoming is that terminal branches for
+single-individual species lack an estimated length, limiting the utility of the computed branch lengths. The second difficulty is the lack of robustness to gene tree error. Gene tree error tends to increase gene tree discordance; as ASTRAL branch lengths are only a function of discordance (and nothing else), gene tree error results in under-estimation of branch lengths. 
+
+locality: in computing the support for a branch, we assume that all four branches around it are correct, enabling us to only consider three rearrangements around the branch
+### User Choice
+Chose to not use on project data and instead run single genomes on Mr.Bayes and compare gene trees. Interested in similar gene trees between different genomes. 
+### Refrences 
+https://arxiv.org/pdf/1904.03826.pdf
+
+https://github.com/smirarab/ASTRAL/blob/master/README.md#installation 
+
+https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial.md#installation
+
+Course slides: Lecture 14 coalescent-based methods 
