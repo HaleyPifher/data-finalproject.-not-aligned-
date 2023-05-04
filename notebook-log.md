@@ -38,8 +38,11 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9045287/#B21
 Download clustalw-2.1-macosx
 '[conda install -c bioconda clustalw](http://www.clustal.org/download/current/)'
 
+*make sure file is fasta format 
+
 Run the program using:
 'clustalw -ALIGN -INFILE=finalprojectalignmentdata.fasta -OUTFILE=finalprojectalignmentdata.fasta -OUTPUT=FASTA'
+
 ## 2)Muscle
 ### Software Description 
 Following guide tree construction, the fundamental step is pairwise profile alignment, which is used first for progressive alignment and then for refinement. MUSCLE uses two distance measures for a pair of sequences: a k mer distance (for an unaligned pair) and the Kimura distance (for an aligned pair). 
@@ -67,19 +70,25 @@ finalprojectalignmentdata.fasta	muscle3.8.31_i86darwin64	muscle3.8.31_i86darwin6
 (base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 
 
 After fixing this error Muscle was ran again but another error appeared: *** ERROR ***  MSA::GetLetter(0/1, 1320/85188)='I'/4294967295 (3/2/23). Instead of trying to correct for this error by using the same fasta file it was determined creating a new one after using TrimAI to remove poorly aligned sequences would be best. Then Muscle was ran again without error. 
-
 ### References 
 https://academic.oup.com/nar/article/32/5/1792/2380623?login=false
 
 https://www.drive5.com/muscle/manual/msa_getletter_bug.html
+### Commands used 
+Download Muscle version 3 for Macos
+(https://drive5.com/muscle5/)
 
+make the i86darwin64 file exexcutable and use as a program
+chmod +x muscle3.8.31_i86darwin64
+
+run the program (./ specifies the current directory) 
+(base) MacBook-Pro-2:muscle2 haleypifher$ ./muscle3.8.31_i86darwin64 -in finalprojectalignmentdata.fasta -out finalprojectalingmentdata-aligned-muscle.fasta
 # *Distance and Parsimony Methods*
 ## 1) R Package - ape for distance-based tree estimation method
 ### Software Description 
 ape is a package written in R for the analysis of phylogenetics and evolution. Functions for reading, writing, plotting, and manipulating phylogenetic trees, analyses of comparative data in a phylogenetic framework, ancestral character analyses, analyses of diversification and macroevolution, computing distances from DNA sequences, reading and writing nucleotide sequences as well as importing from BioConductor, and several tools such as Mantel's test, generalized skyline plots, graphical exploration of phylogenetic data (alex, trex, kronoviz), estimation of absolute evolutionary rates and clock-like trees using mean path lengths and penalized likelihood, dating trees with non-contemporaneous sequences, translating DNA into AA sequences, and assessing sequence alignments. Phylogeny estimation can be done with the NJ, BIONJ, ME, MVR, SDM, and triangle methods, and several methods handling incomplete distance matrices (NJ*, BIONJ*, MVR*, and the corresponding triangle method). 
 
 I created a tree using the classical Neighbor-Joining (NJ) algorithm. 
-
 ### Strengths & Weaknesses 
 can use the Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate. 
 
@@ -88,17 +97,46 @@ phylogeny estimation can completed with a variety of methods
 R has the ability to match different datasets using labels (names, rownames and colnames), and ape uses this feature to match trees, sequences and other data. 
 
 users can face practical difficulties that prevent efficient analysis 
-
 ### User Choice 
 In creating tree ran into the following error message: "Error in njs(D) : distance information insufficient to construct a tree, cannot calculate agglomeration criterion." To correct it I refered to page 115 of package 'ape' documentation which has the following note: "If the sequences are very different, most evolutionary distances are undefined and a non-finite value (Inf or NaN) is returned. You may do dist.dna(, model = "raw") to check whether some values are higher than 0.75." None of my distance values were equal to or >.75, but changing the model from TN93 to raw did allow me to create a tree. 
-
 ### References 
 https://cran.r-project.org/web/packages/ape/ape.pdf
 
 http://ape-package.ird.fr/
 
 https://academic.oup.com/bioinformatics/article/35/3/526/5055127
+### Commands used
+first, download R (version 4.2.2 for Macos)
 
+Install package 
+install.packages("adegenet", dep=TRUE)
+
+check the downloaded libraries 
+library(ape)
+library(adegenet)
+
+Make sure you're in the right folder/directory 
+ setwd("Parsimony & distance")\
+ 
+ Load data 
+ > dna <- fasta2DNAbin(file="finalprojectalignmentdata-2.fasta")\
+
+Compute the genetic distances using the TN93 model (*note under user choice section had error in the 1st and 2nd runs, but in running 3rd time able to apply the TN93 model as described here)
+D <- dist.dna(dna, model="TN93")
+
+Root the tree on an outgroup 
+dist3treroot=root(tre, outgroup="CP013196.1_39316-39810")
+
+open new pdf file
+ pdf("dist3treroot.pdf")
+ 
+ plot the file 
+ plot(dist3treroot, cex=.6)
+ 
+ close and save the pdf
+ > dev.off()
+pdf 
+  3  
 ## 2) R package - phangron 
 ### Software Description 
 phangron is a package for phylogenetic reconstruction and analysis in R. It now offers the possibility of reconstructing phylogenies with distance based methods, maximum parsimony or maximum likelihood (ML) and performing Hadamard conjugation. Extending the general ML framework, this package provides the possibility of estimating mixture and partition models. Furthermore, phangorn offers several functions for comparing trees, phylogenetic models or splits, simulating character data and performing congruence analyses.
@@ -113,7 +151,37 @@ parsimony methods have been shown to produce inconsistent trees
 The maximum parsimony method was used to construct the tree.
 ### Refrences 
 https://academic.oup.com/bioinformatics/article/27/4/592/198887
+### Commands used 
+Install package (could install initially before running distance, just goes with this step) 
+install.packages("phangorn", dep=TRUE)
 
+check the downloaded libraries 
+library(ape)
+library(adegenet)
+library(phangorn)
+
+(data already loaded from distance method)
+
+find starting tree
+tre.ini <- nj(dist.dna(dna,model="raw"))
+
+search tree for maximum parsimony 
+tre.pars <- optim.parsimony(tre.ini, dna2)
+Final p-score 1443 after  0 nni operations 
+
+Root the tree on an outgroup 
+pars3treroot=root(tre.pars, outgroup="CP013196.1_39316-39810")
+
+open new pdf file
+pdf("pars3treeroot.pdf")
+
+plot the file 
+plot(pars3treeroot.pdf, cex=.6)
+
+close and save the pdf
+dev.off()
+pdf 
+  2 
 # *Maximum Liklihood*
 ## 1)RAXML
 ### Software Description 
@@ -170,7 +238,19 @@ https://academic.oup.com/bioinformatics/article/30/9/1312/238053?login=false (pa
 https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f (extra)
 
 https://cran.r-project.org/web/packages/TreeTools/vignettes/load-trees.html (used to root in R)
+### Commands used 
+Download RAxML 
+(https://github.com/amkozlov/raxml-ng)
 
+clone the ng-tutorial (for data sets and scripts)
+git clone (https://github.com/amkozlov/ng-tutorial.git)
+
+
+check for the MSA 
+(base) MacBook-Pro-2:raxml-ng_v1.1.0_macos_x86_64 haleypifher$ ./raxml-ng --check --msa finalprojectalignmentdata-out.fasta 2 --model GTR+G
+
+Infer the ML tree
+(base) MacBook-Pro-2:raxml-ng_v1.1.0_macos_x86_64 haleypifher$ ./raxml-ng --msa finalprojectalignmentdata-out.fasta.raxml.reduced.phy --model GTR+G --prefix T3-myseed --threads 2 --seed 3162021
 # *Bayesian Inference*
 ## Mr.Bayes
 ### Software Description 
@@ -199,7 +279,34 @@ use Emacs not text edit (on mac text edit adds random lines of unrelated text th
 ### Refrences 
 https://academic.oup.com/bioinformatics/article/17/8/754/235132?login=false
 
-Course slides: Lecture 12 Bayesian Inference 
+Course slides: Lecture 12 Bayesian Inference
+### Commands used 
+Download the software for Macos 
+(http://nbisweden.github.io/MrBayes/)
+
+Git clone the files
+(base) MacBook-Pro-2:~ haleypifher$  git clone --depth=1 https://github.com/NBISweden/MrBayes.git
+
+Make sure data is in Nexus format 
+
+create a mrbayes block text file *using the priors and changes explained above as well as defaults: 
+begin mrbayes;
+ set autoclose=yes;
+ prset brlenspr=unconstrained:exp(10.0);
+ prset shapepr=exp(1.0);
+ prset tratiopr=beta(10.0,10.0);
+ prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
+ lset nst=2 rates=gamma ngammacat=4;
+ mcmcp ngen=100000 samplefreq=10 printfreq=100 nruns=1 nchains=3 savebrlens=yes;
+ mcmc;
+ sumt;
+end;
+
+Append the MrBayes block to the nexus file 
+(base) MacBook-Pro-2:MrBayes haleypifher$ cat finalprojectalignmentdata-out.fasta2.nex Mrbblocko.txt > finalprojectalignmentdata-out.nex
+
+Run MrBayes 
+(base) MacBook-Pro-2:MrBayes haleypifher$ mb finalprojectalignmentdata-out.fasta2.nex
 # *Coalescent*
 ## ASTRAL
 ### Software Description 
@@ -238,3 +345,6 @@ https://github.com/smirarab/ASTRAL/blob/master/README.md#installation
 https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial.md#installation
 
 Course slides: Lecture 14 coalescent-based methods 
+###Commands that would have been Used 
+Run the program
+ java -jar astral.5.7.8.jar -i in.tree -o out.tre 2>out.log
