@@ -345,6 +345,6 @@ https://github.com/smirarab/ASTRAL/blob/master/README.md#installation
 https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial.md#installation
 
 Course slides: Lecture 14 coalescent-based methods 
-###Commands that would have been Used 
+### Commands that would have been Used 
 Run the program
  java -jar astral.5.7.8.jar -i in.tree -o out.tre 2>out.log
