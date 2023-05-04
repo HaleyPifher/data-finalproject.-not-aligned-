@@ -34,7 +34,12 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC308517/pdf/nar00046-0131.pdf
 http://www.clustal.org/download/clustalw_help.txt
 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9045287/#B21
+### Commands used 
+Download clustalw-2.1-macosx
+'[conda install -c bioconda clustalw](http://www.clustal.org/download/current/)'
 
+Run the program using:
+'clustalw -ALIGN -INFILE=finalprojectalignmentdata.fasta -OUTFILE=finalprojectalignmentdata.fasta -OUTPUT=FASTA'
 ## 2)Muscle
 ### Software Description 
 Following guide tree construction, the fundamental step is pairwise profile alignment, which is used first for progressive alignment and then for refinement. MUSCLE uses two distance measures for a pair of sequences: a k mer distance (for an unaligned pair) and the Kimura distance (for an aligned pair). 
