@@ -273,9 +273,9 @@ program can infer ancestral states while accommodating uncertainty about the phy
 uses posterior probability of the ith phylogenetic tree (τi ) conditional on an alignment of DNA sequences (X) can be calculated using Bayes theorem
 approximates the posterior probabilities of trees 
 ### User Choice 
-specify priors, assumptions of subsitution model, and outgroup
-I chose to not specify an outgroup as with maximum liklihood it also did not make sense, the taxa are all very similar on a timescale/interms of genome. *(4/13) will come back and specify specific priors when I run again, first used the original commands*
-use Emacs not text edit (on mac text edit adds random lines of unrelated text that Mr.Bayes can't read and returns an error)
+specify priors (beta(10,10) for kappa), assumptions of subsitution model, and outgroup
+I chose to not specify an outgroup as with maximum liklihood it also did not make sense, the taxa are all very similar on a timescale/interms of genome. 
+used Emacs not text edit (on mac text edit adds random lines of unrelated text that Mr.Bayes can't read and returns an error)
 ### Refrences 
 https://academic.oup.com/bioinformatics/article/17/8/754/235132?login=false
 
